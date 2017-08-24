@@ -1,6 +1,6 @@
 language: ruby
-sudo: required
-disty: trusty
+sudo: false
+disty: Trusty
 rvm:
   - 2.2.0
 env:
@@ -11,3 +11,4 @@ script:
   - bundle exec rspec spec/
 before_script:
   - psql -c 'create database recipe_test' -U postgres
+bundler_args: --binstubs=./bundler_stubs
