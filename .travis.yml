@@ -4,13 +4,10 @@ disty: trusty
 rvm:
   - 2.2.0
 env:
-  matrix:
-      - DB=mysql
-      - DB=postgresql
+  - DB=postgresql
 script:
   - RAILS_ENV=test bundle exec rake db:migrate --trace
   - bundle exec rake db:test:prepare
   - bundle exec rspec spec/
 before_script:
-  - mysql -e 'create database recipe_test'
   - psql -c 'create database recipe_test' -U postgres
