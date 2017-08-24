@@ -1,0 +1,18 @@
+---
+engines:
+  rubocop:
+    enabled: true
+    exclude_paths:
+    - config/
+    - db/
+    - spec/
+    - vendor/
+
+exclude_paths:
+- "public/assets/"
+
+ratings:
+   paths:
+   - "app/**/*"
+   - "lib/**/*"
+   - "**.rb"
