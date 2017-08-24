@@ -1,4 +1,6 @@
 language: ruby
+sudo: required
+disty: trusty
 rvm:
   - 2.2.0
 env:
