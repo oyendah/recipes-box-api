@@ -1,0 +1,14 @@
+language: ruby
+sudo: false
+disty: Trusty
+rvm:
+  - 2.2
+env:
+  - DB=postgresql
+script:
+  - RAILS_ENV=test bundle exec rake db:migrate --trace
+  - bundle exec rake db:test:prepare
+  - bundle exec rspec spec/
+before_script:
+  - psql -c 'create database recipe_test' -U postgres
+bundler_args: --binstubs=./bundler_stubs
