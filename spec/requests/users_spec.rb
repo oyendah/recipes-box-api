@@ -1,5 +1,5 @@
 require 'rails_helper'
-require 'pry'
+
 # rubocop:disable Metrics/BlockLength
 RSpec.describe V1::UsersController, type: :request do
   let(:user) { create(:user) }
