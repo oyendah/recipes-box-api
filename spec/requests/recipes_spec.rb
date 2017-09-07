@@ -4,10 +4,15 @@ require 'rails_helper'
 RSpec.describe 'Recipes API' do
   # Initialize the test data
   let(:user) { create(:user) }
-  let!(:recipes) { create_list(:recipe, 20, user_id: user.id) }
+  let(:recipe_category) { create(:recipe_category) }
+  let!(:recipes) do
+    create_list(:recipe, 20, user_id: user.id,
+                             recipe_category_id: recipe_category.id)
+  end
   let(:user_id) { user.id }
   let(:id) { recipes.first.id }
   let(:headers) { valid_headers }
+  let(:recipe_category_id) { recipe_category.id }
 
   # Test suite for GET /users/:user_id/recipes
   describe 'GET /users/:user_id/recipes' do
@@ -49,6 +54,8 @@ RSpec.describe 'Recipes API' do
 
       it 'returns the recipe' do
         expect(json['id']).to eq(id)
+        expect(json['access']).to eq('can_access')
+        expect(json['recipe_category_id']).to eq(recipe_category_id)
       end
     end
 
@@ -67,7 +74,7 @@ RSpec.describe 'Recipes API' do
 
   # Test suite for PUT /users/:user_id/recipes
   describe 'POST /users/:user_id/recipes' do
-    let(:valid_attributes) { { title: 'Eba', access: 'public' }.to_json }
+    let(:valid_attributes) { { title: 'Eba', access: 1 }.to_json }
 
     context 'when request attributes are valid' do
       before do

@@ -3,7 +3,12 @@ require 'rails_helper'
 RSpec.describe 'Recipes API' do
   # Initialize the test data
   let(:user) { create(:user) }
-  let!(:recipes) { create_list(:recipe, 10, user_id: user.id) }
+  let(:recipe_category) { create(:recipe_category) }
+  # let!(:recipes) { create_list(:recipe, 10, user_id: user.id) }
+  let!(:recipes) do
+    create_list(:recipe, 10, user_id: user.id,
+                             recipe_category_id: recipe_category.id)
+  end
   let(:id) { recipes.first.id }
   let(:headers) { valid_headers }
 

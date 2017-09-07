@@ -25,6 +25,7 @@ gem 'jwt'
 # gem 'rack-cors'
 gem 'rubocop', require: false
 gem 'pg', '0.18.4'
+gem 'rack-cors', :require => 'rack/cors'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
