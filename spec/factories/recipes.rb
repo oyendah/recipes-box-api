@@ -5,8 +5,8 @@ FactoryGirl.define do
     ingredient { Faker::StarWars.character }
     time_to_cook '45 min'
     instruction { Faker::Lorem.paragraph(2) }
-    access 'public'
     number_of_serving 0
     user_id nil
+    recipe_category nil
   end
 end

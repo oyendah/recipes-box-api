@@ -34,4 +34,8 @@ class Message
   def self.login_success
     'You\'ve successfully logged in'
   end
+
+  def self.record_created(record = 'record')
+    "#{record} successfully created"
+  end
 end

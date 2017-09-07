@@ -53,6 +53,7 @@ RSpec.describe V1::UsersController, type: :request do
       it 'returns the user' do
         expect(json).not_to be_empty
         expect(json['id']).to eq(user_id)
+        expect(json['user_access']).to eq('non_admin')
       end
 
       it 'returns status code 200' do
